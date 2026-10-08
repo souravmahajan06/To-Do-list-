@@ -1,29 +1,63 @@
-<!DOCTYPE HTML5>
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>To-Do List</title>
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <input type="text" id="input-box" placeholder="enter new task...">
-    
-    <select id="task-status">
-      <option value="pending">Pending</option>
-      <option value="inprogress">In progress</option>
-      <option value="completed">Completed</option>
-    </select>
-    <button id="Btn">Add Task</button>
+    <div class="app-shell">
+      <header class="header">
+        <div class="title-block">
+          <span class="eyebrow">Productivity workspace</span>
+          <h1 class="title">TaskFlow</h1>
+        </div>
+        <div class="header-meta">
+          <span class="header-pill">Today</span>
+          <span class="header-pill subtle">Focus board</span>
+        </div>
+      </header>
 
-    <h3>Pending</h3>
-    <ul id="pending-list"></ul>
+      <form class="task-form" id="task-form">
+        <input type="text" id="input-box" placeholder="Enter a new task..." aria-label="New task" />
 
-    <h3>In Progress</h3>
-    <ul id="inprogress-list"></ul>
+        <select id="task-status" aria-label="Task status">
+          <option value="pending">Pending</option>
+          <option value="inprogress">In progress</option>
+          <option value="completed">Completed</option>
+        </select>
 
-    <h3>Completed</h3>
-    <ul id="completed-list"></ul>
+        <button id="Btn" class="primary-btn" type="submit">Add Task</button>
+      </form>
 
-    <!-- <ul id="task-list"></ul> -->
+      <main class="task-board">
+        <section class="task-column" data-status="pending">
+          <div class="task-column-header">
+            <h3>Pending</h3>
+            <span class="task-column-count" id="pending-count">0</span>
+          </div>
+          <ul id="pending-list" aria-live="polite"></ul>
+        </section>
+
+        <section class="task-column" data-status="inprogress">
+          <div class="task-column-header">
+            <h3>In Progress</h3>
+            <span class="task-column-count" id="inprogress-count">0</span>
+          </div>
+          <ul id="inprogress-list" aria-live="polite"></ul>
+        </section>
+
+        <section class="task-column" data-status="completed">
+          <div class="task-column-header">
+            <h3>Completed</h3>
+            <span class="task-column-count" id="completed-count">0</span>
+          </div>
+          <ul id="completed-list" aria-live="polite"></ul>
+        </section>
+      </main>
+    </div>
+
     <script src="script.js"></script>
   </body>
 </html>
